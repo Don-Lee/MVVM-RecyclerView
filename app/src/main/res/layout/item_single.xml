@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="don.rjgc.cn.mvvmframework.model.bean.Country"/>
+    </data>
+
+    <don.rjgc.cn.mvvmframework.base.recycler.swipe.SwipeMenuLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:clickable="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/swipe_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/country_name"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="@{model.countryNameCn}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="#ecd50a"
+            android:clickable="true"
+            android:text="@string/update"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/btn_del"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_red_light"
+            android:text="@string/delete"
+            android:textColor="@android:color/white"/>
+    </don.rjgc.cn.mvvmframework.base.recycler.swipe.SwipeMenuLayout>
+</layout>
