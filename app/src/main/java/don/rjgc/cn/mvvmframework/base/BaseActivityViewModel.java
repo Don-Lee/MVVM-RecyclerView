@@ -118,6 +118,13 @@ public abstract class BaseActivityViewModel<ACT extends BaseActivity, DB extends
     }
 
 
+    protected void onSaveInstanceState(Bundle outState) {
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    }
+
+
     protected void checkPermissions(String... permissions) {
         List<String> needRequestPermissionList = findDeniedPermissions(permissions);
         if (needRequestPermissionList != null &&

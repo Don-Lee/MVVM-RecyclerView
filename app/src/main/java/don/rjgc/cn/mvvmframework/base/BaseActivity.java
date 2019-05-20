@@ -96,11 +96,12 @@ public abstract class BaseActivity<DB extends ViewDataBinding, VM extends BaseAc
 
     @Override
     protected void onStart() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
-        mViewModel.onStartViewModel();
         super.onStart();
+        //设置状态栏透明
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        }
+        mViewModel.onStartViewModel();
     }
 
     @Override
@@ -123,9 +124,9 @@ public abstract class BaseActivity<DB extends ViewDataBinding, VM extends BaseAc
 
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         mViewModel.onDestroyViewModel();
         mDataBinding.unbind();
-        super.onDestroy();
     }
 
     @Override
@@ -145,6 +146,19 @@ public abstract class BaseActivity<DB extends ViewDataBinding, VM extends BaseAc
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         mViewModel.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mViewModel.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mViewModel.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override
